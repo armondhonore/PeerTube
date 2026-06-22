@@ -1,0 +1,36 @@
+application:
+  name: peertube
+  pods:
+  - name: app
+    image: chocobozzz/peertube:production-bookworm
+    path: /
+    servicePorts:
+    - 9000
+    vars:
+      PEERTUBE_DB_HOSTNAME: postgres.pod
+      PEERTUBE_DB_USERNAME: peertube
+      PEERTUBE_DB_PASSWORD: peertube
+      PEERTUBE_WEBSERVER_HOSTNAME: relaxed-weasel-peertube.cloud.nexlayer.ai
+      PEERTUBE_SECRET: "a1b2c3d4e5f6a1b2c3d4"
+      PEERTUBE_SMTP_FROM: "peertube@relaxed-weasel-peertube.cloud.nexlayer.ai"
+      PEERTUBE_REDIS_HOSTNAME: redis.pod
+    volumes:
+    - name: peertube-data
+      mountPath: /data
+      size: 20Gi
+  - name: postgres
+    image: postgres:16-alpine
+    servicePorts:
+    - 5432
+    vars:
+      POSTGRES_DB: peertube
+      POSTGRES_USER: peertube
+      POSTGRES_PASSWORD: peertube
+    volumes:
+    - name: peertube-db
+      mountPath: /var/lib/postgresql/data
+      size: 10Gi
+  - name: redis
+    image: redis:7-alpine
+    servicePorts:
+    - 6379
