@@ -2,7 +2,7 @@ application:
   name: peertube
   pods:
   - name: app
-    image: chocobozzz/peertube:production-bookworm
+    image: mirror.gcr.io/chocobozzz/peertube:production-bookworm
     path: /
     servicePorts:
     - 9000
@@ -20,7 +20,7 @@ application:
       mountPath: /data
       size: 20Gi
   - name: postgres
-    image: postgres:16-alpine
+    image: mirror.gcr.io/library/postgres:16-alpine
     servicePorts:
     - 5432
     vars:
@@ -28,6 +28,6 @@ application:
       POSTGRES_USER: peertube
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
   - name: redis
-    image: redis:7-alpine
+    image: mirror.gcr.io/library/redis:7-alpine
     servicePorts:
     - 6379
