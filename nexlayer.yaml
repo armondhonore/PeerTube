@@ -26,10 +26,6 @@ application:
       POSTGRES_DB: peertube
       POSTGRES_USER: peertube
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    volumes:
-    - name: peertube-db
-      mountPath: /var/lib/postgresql/data
-      size: 10Gi
   - name: redis
     image: redis:7-alpine
     servicePorts:
