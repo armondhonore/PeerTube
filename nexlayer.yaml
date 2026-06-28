@@ -11,6 +11,7 @@ application:
       PEERTUBE_DB_USERNAME: peertube
       PEERTUBE_DB_PASSWORD: ${POSTGRES_PASSWORD}
       PEERTUBE_WEBSERVER_HOSTNAME: relaxed-weasel-peertube.cloud.nexlayer.ai
+      PEERTUBE_ADMIN_EMAIL: "admin@relaxed-weasel-peertube.cloud.nexlayer.ai"
       PEERTUBE_SECRET: "a1b2c3d4e5f6a1b2c3d4"
       PEERTUBE_SMTP_FROM: "peertube@relaxed-weasel-peertube.cloud.nexlayer.ai"
       PEERTUBE_REDIS_HOSTNAME: redis.pod
